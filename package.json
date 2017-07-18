@@ -1,0 +1,24 @@
+{
+  "name": "react-delegate",
+  "version": "1.0.0",
+  "description": "React delegate pattern for better callbacks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/swipesapp/react-delegate.git"
+  },
+  "keywords": [
+    "React",
+    "Delegate",
+    "Callback"
+  ],
+  "author": "Kasper Pihl Tornoe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/swipesapp/react-delegate/issues"
+  },
+  "homepage": "https://github.com/swipesapp/react-delegate#readme"
+}
