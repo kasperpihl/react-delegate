@@ -2,10 +2,7 @@
   "name": "react-delegate",
   "version": "1.0.0",
   "description": "React delegate pattern for better callbacks",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "main": "lib/react-delegate.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/swipesapp/react-delegate.git"
@@ -20,5 +17,27 @@
   "bugs": {
     "url": "https://github.com/swipesapp/react-delegate/issues"
   },
-  "homepage": "https://github.com/swipesapp/react-delegate#readme"
+  "homepage": "https://github.com/swipesapp/react-delegate#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1"
+  },
+  "peerDependencies": {
+    "react": ">=0.13"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ],
+    "plugins": [
+      "transform-object-rest-spread",
+      "add-module-exports"
+    ]
+  },
+  "scripts": {
+    "compile": "babel -d lib/ src/",
+    "prepublish": "npm run compile"
+  }
 }
