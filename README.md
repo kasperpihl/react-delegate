@@ -89,7 +89,7 @@ OBS: if the delegate does not implement a function nothing will happen and we wi
 
 Sometimes you need to send properties back to the parent like taskId or the task itself.
 
-Parent - receive the arguments
+TaskList wants to receive arguments (parent)
 ```
 class TaskList extends React.Component {
   ...
