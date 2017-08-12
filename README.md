@@ -2,9 +2,15 @@
 
 Fixing the relationship between parent and child in react to avoid callback hells and over-parenting. :)
 
+# Installation
+```
+npm install --save react-delegate
+```
+
 # Basic idea (Parent)
 The delegate turns a TaskList component (parent):
 ```
+/* BEFORE */
 class TaskList extends React.Component {
   constructor(props) {
     super(props);
@@ -31,8 +37,9 @@ class TaskList extends React.Component {
 }
 ```
 
-Into looking like that:
+Into looking like that (parent):
 ```
+/* AFTER */
 class TaskList extends React.Component {
   constructor(props) {
     super(props);
@@ -53,12 +60,6 @@ class TaskList extends React.Component {
   }
 }
 ```
-
-# Installation
-```
-npm install --save react-delegate
-```
-
 
 # Simple setup (child)
 And it is super easy to set up in the Task component (child)
