@@ -54,6 +54,12 @@ class TaskList extends React.Component {
 }
 ```
 
+# Installation
+```
+npm install --save react-delegate
+```
+
+
 # Simple setup
 And it is super easy to set up in the Task component
 ```
