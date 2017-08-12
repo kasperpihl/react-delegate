@@ -2,8 +2,8 @@
 
 Fixing the relationship between parent and child in react to avoid callback hells and over-parenting. :)
 
-# Basic idea
-The delegate turns a TaskList component like this:
+# Basic idea (Parent)
+The delegate turns a TaskList component (parent):
 ```
 class TaskList extends React.Component {
   constructor(props) {
@@ -60,17 +60,15 @@ npm install --save react-delegate
 ```
 
 
-# Simple setup
-And it is super easy to set up in the Task component
+# Simple setup (child)
+And it is super easy to set up in the Task component (child)
 ```
 
 import { setupDelegate } from 'react-delegate';
 class Task extends React.Component {
   constructor(props) {
     super(props);
-    // props.delegate is expected for this to work
     setupDelegate(this, 'onTaskComplete', 'onTaskDelete', 'onTaskSchedule');
-    // This sets up this.onTaskComplete etc to call the delegate
   }
 
   render() {
@@ -86,10 +84,10 @@ class Task extends React.Component {
 
 OBS: if the delegate does not implement a function nothing will happen and we will ignore the call.
 
-# Arguments/Properties to the parent
-Sometimes you need to include properties though like the taskId or the task itself. This can be achieved using the built-in caching mechanism:
+# Arguments/Properties back to the parent
+Sometimes you need to send properties back to the parent like taskId or the task itself. This can be achieved using the built-in caching mechanism:
 
-And it is super easy to set up in the Task component
+Parent - receive the arguments
 ```
 class TaskList extends React.Component {
   ...
@@ -98,18 +96,20 @@ class TaskList extends React.Component {
   }
   ...
 }
+```
+Child - super easy to set up
+```
 
 import { setupDelegate } from 'react-delegate';
 class Task extends React.Component {
   constructor(props) {
     super(props);
     setupDelegate(this, 'onTaskComplete', 'onTaskDelete', 'onTaskSchedule');
-    // This also sets up a this.onTaskCompleteCached that can take arguments for the delegate.
+    // This sets up a this.onTaskCompleteCached that take arguments.
   }
 
   render() {
     const { task } = this.props;
-    // Use a cached version with properties to send back
     return (
       <div onClick={this.onTaskCompleteCached(task.id, task)}>
         {task.title}
