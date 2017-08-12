@@ -2,6 +2,7 @@
 
 Fixing the relationship between parent and child in react to avoid callback hells and over-parenting. :)
 
+# Basic idea
 The delegate turns a TaskList component like this:
 ```
 class TaskList extends React.Component {
@@ -53,9 +54,11 @@ class TaskList extends React.Component {
 }
 ```
 
-
+# Simple setup
 And it is super easy to set up in the Task component
 ```
+
+import { setupDelegate } from 'react-delegate';
 class Task extends React.Component {
   constructor(props) {
     super(props);
@@ -73,11 +76,9 @@ class Task extends React.Component {
 }
 ```
 
-This sets up this.onTaskComplete etc. to call the delegate prop of this class's method "onTaskComplete"
-All the delegate need to do is implement that function and we will call it if it exists.
-OBS: if the delegate does not implement this function nothing will happen and we will ignore the.
+OBS: if the delegate does not implement a function nothing will happen and we will ignore the call.
 
-
+# Arguments/Properties to the parent
 Sometimes you need to include properties though like the taskId or the task itself. This can be achieved using the built-in caching mechanism:
 
 And it is super easy to set up in the Task component
@@ -89,6 +90,8 @@ class TaskList extends React.Component {
   }
   ...
 }
+
+import { setupDelegate } from 'react-delegate';
 class Task extends React.Component {
   constructor(props) {
     super(props);
@@ -109,4 +112,4 @@ class Task extends React.Component {
 
 As you can see, each method you set up also get a Cached version that can take arguments you want to send to the delegate. These arguments will be added before any standard arguments like the event (e).
 
-OBS: The first argument to the cached methods acts as a key. This is to not create a new function all the time on render. So make sure that if you render a list of tasks etc, to use a unique key as the first argument.
+OBS: The first argument to the cached methods acts as a key. This is to avoid creating a new function all the time on render. So make sure that if you render a list of tasks etc, to use a unique key as the first argument.

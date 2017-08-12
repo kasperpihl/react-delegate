@@ -1,16 +1,16 @@
 {
   "name": "react-delegate",
   "version": "1.0.0",
-  "description": "React delegate pattern for better callbacks",
+  "description": "React delegate pattern for better callbacks to fix the parent/child relationship",
   "main": "lib/react-delegate.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/swipesapp/react-delegate.git"
   },
   "keywords": [
-    "React",
-    "Delegate",
-    "Callback"
+    "react",
+    "delegate",
+    "callback"
   ],
   "author": "Kasper Pihl Tornoe",
   "license": "MIT",
