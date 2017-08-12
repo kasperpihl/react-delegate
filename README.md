@@ -68,7 +68,9 @@ import { setupDelegate } from 'react-delegate';
 class Task extends React.Component {
   constructor(props) {
     super(props);
+    // props.delegate is expected for this to work
     setupDelegate(this, 'onTaskComplete', 'onTaskDelete', 'onTaskSchedule');
+    // This sets up this.onTaskComplete etc to call the delegate
   }
 
   render() {
@@ -102,6 +104,7 @@ class Task extends React.Component {
   constructor(props) {
     super(props);
     setupDelegate(this, 'onTaskComplete', 'onTaskDelete', 'onTaskSchedule');
+    // This also sets up a this.onTaskCompleteCached that can take arguments for the delegate.
   }
 
   render() {
