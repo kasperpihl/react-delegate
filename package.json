@@ -2,7 +2,7 @@
   "name": "react-delegate",
   "version": "1.0.1",
   "description": "React delegate pattern for better callbacks to fix the parent/child relationship",
-  "main": "lib/react-delegate.js",
+  "main": "./lib/react-delegate.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/swipesapp/react-delegate.git"
