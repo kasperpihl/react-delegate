@@ -1,3 +1,5 @@
+import React from 'react';
+
 export function setupCachedCallback(method, ctx) {
   const cachedMethod = {};
   return function cachedCallback(id) {
@@ -36,5 +38,25 @@ export function setupDelegate(obj, ...delegateMethods) {
     setGlobals: (...globalArgs) => {
       globals = globals.concat(globalArgs);
     }
+  }
+}
+
+export function withDelegate(methods) {
+  return (component) => {
+    class withDelegate extends React.Component {
+      constructor(props) {
+        super(props);
+        this.methods = { delegate: props.delegate };
+        setupDelegate(this.methods, ...methods);
+      }
+      render() {
+        const { delegate, ...otherProps } = this.props;
+        const { delegate: d, ...allMethods } = this.methods;
+
+        return React.createElement(component, { ...otherProps, ...allMethods });
+      }
+    }
+
+    return withDelegate;
   }
 }
