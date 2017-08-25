@@ -9,7 +9,7 @@ npm install --save react-delegate
 
 # Basic idea (Parent)
 The delegate turns a TaskList component (parent):
-```
+```jsx
 /* BEFORE */
 class TaskList extends React.Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class TaskList extends React.Component {
 ```
 
 Into looking like that (parent):
-```
+```jsx
 /* AFTER */
 class TaskList extends React.Component {
   constructor(props) {
@@ -63,8 +63,7 @@ class TaskList extends React.Component {
 
 # Simple setup (child)
 And it is super easy to set up in the Task component (child)
-```
-
+```jsx
 import { setupDelegate } from 'react-delegate';
 class Task extends React.Component {
   constructor(props) {
@@ -90,7 +89,7 @@ OBS: if the delegate does not implement a function nothing will happen and we wi
 Sometimes you need to send properties back to the parent like taskId or the task itself.
 
 TaskList wants to receive arguments (parent)
-```
+```jsx
 class TaskList extends React.Component {
   ...
   onTaskComplete(taskId, task, e) {
@@ -103,7 +102,7 @@ This can be achieved in two ways.
 ## 1. setGlobals (child)
 You can call setGlobals and prepend arguments to all the delegate calls.
 This is useful in a class like Task that want to send which task is being completed, deleted or scheduled.
-```
+```jsx
 import { setupDelegate } from 'react-delegate';
 class Task extends React.Component {
   constructor(props) {
@@ -126,7 +125,7 @@ class Task extends React.Component {
 ## 2. ...Cached version (child)
 Each method you setup gets a cached version as well that you can pass parameters to.
 This is great if you need to reuse a callback for multiple purposes or multiple rows.
-```
+```jsx
 import { setupDelegate } from 'react-delegate';
 class Task extends React.Component {
   constructor(props) {
